@@ -4,13 +4,17 @@
 
 ## Overview
 
-An _IoT Event Streamer_ for microcontroller sensor data. This project is a simple example of how to stream sensor data from a microcontroller to a central server located on your local area network. From therem hand it off to another server located on the internet. The data is then pushed to a client via SSE (server-sent events). The client uses HTML & JavaScript to display the data.
+An _IoT Event Streamer_ for microcontroller sensor data. This project is a simple example of how to stream sensor data from a microcontroller, via `HTTP`, to an `HTTPS` webserver located on the internet. The data is then pushed to a client on the live server via SSE (server-sent events). Uses HTML & JavaScript to display the data.
 
-The project is divided into parts: the C++ firmware for the microcontroller, two different Node.js servers and a simple HTML page with JavaScript. `Server #1` is located on a local area network and takes `POST` requests from the _microcontroller_. Server #1 then makes a POST request to `Server #2` located on a domain. Server #2 listens at a `/sensors` endpoint where it recieves the sensor data. Server #2 also has a GET endpoint called `/events` that listens for the sensor data and pushes it to the client, `index.html`, via `SSE`. The client is a simple HTML page with JavaScript to display the sensor data in real-time. 
+The project is divided into parts: the C++ firmware for the microcontroller, two different Node.js servers and a simple HTML page with JavaScript. 
 
-Because the project is in its infancy, I have purposely slowed down the data stream to make it easier to see the data \*(see demo). I plan to change it to real-time once the project has matured a bit. And honestly, that isn't the focus of the project, displaying data in real-time. The focus is really the entire process. I discovered how powerful the standard HTTP methods (GET, POST) and API's really are. And also, when your microcontroller doesn't support HTTPS, how to get your sensor data out of your local area network, using `HTTP` and into the internet using `HTTPS` without using a cloud provider.
+`Server #1` is ran locally, on your LAN. It's a Node/Express server and takes `POST` requests from the _microcontroller_, processes the sensor data and then makes a POST request to `Server #2` located on an HTTPS encrypted webserver. 
 
-In ways, this project is a culmination of all that I've learned over the last 1-2 years. And because this project has almost everything I'd like to learn more about I'll be on this for a while. I'm not sure how long it will take, but I'm in no hurry. I'm just enjoying the journey. :)
+Server #2 listens at a `/sensors` endpoint where it recieves the sensor data. The server code also has a `GET` endpoint called `/events` that listens for the sensor data and pushes it to the client via `SSE` where it's displayed.
+
+Because the project is in its infancy, I have purposely slowed down the data stream to make it easier to see the data \*(see demo). I plan to change it to real-time once the project has matured a bit. But honestly, that isn't the focus of the project. The focus is really the entire process here. That is, what do you do if you have an IoT device that doesn't support or have an `HTTPS` library? How to get your sensor data "out" of your local area network and *into* the internet using `HTTPS`. No way woudl you want to send your sensor data via HTTP, that's extremely insecure. And, you refused to pay for the cost of using a cloud provider? That's when I discovered how powerful the standard HTTP methods (GET, POST) and a API really are in this case. I am sure there is more than one way to do this but this proved to be the most rock solid and *secure* way of doing it after trying other a few other ways.
+
+In ways, this project is a culmination of all that I've learned over the last 1-2 years. This project has almost everything I'd like to learn *more* about so I plan to improve it while I learn more...there's still *lots* to improve and add...
 
 ## Usage
 
