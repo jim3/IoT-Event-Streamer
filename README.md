@@ -16,7 +16,9 @@ Because the project is in its infancy, I have purposely slowed down the data str
 
 In ways, this project is a culmination of all that I've learned over the last 1-2 years (client, server and microcontroller programming all in one). This project has almost everything I'd like to learn *more* about so I plan to improve it while I learn...there's still *lots* to learn, improve, add...
 
-Check out an inital "test run" of the project at: [https://jim3.xyz](https://jim3.xyz) At the moment it prints out values every 5 seconds so wait till the table populates when visiting. A `BME680` environmental sensor would be more interesting so that is what I am working on now. :) Will be using a `ESP32` series microcontoller, first time working with an ESP32 so looking forward to it.
+---
+
+\* Check out an inital "test run" of the project at: [https://jim3.xyz](https://jim3.xyz) At the moment it prints out values every 5 seconds so wait till the table populates when visiting. A `BME680` environmental sensor would be more interesting so that is what I am working on now. :) Will be using a `ESP32` series microcontoller, first time working with an ESP32 so looking forward to it.
 
 ## Usage
 
