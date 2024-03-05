@@ -14,7 +14,9 @@ Server #2 listens at a `/sensors` endpoint where it recieves the sensor data. Th
 
 Because the project is in its infancy, I have purposely slowed down the data stream to make it easier to see the data \*(see demo). I plan to change it to real-time once the project has matured a bit. But honestly, that isn't the focus of the project. The focus is really the entire process here. That is, what do you do if you have an IoT device that doesn't support or have an `HTTPS` library? How to get your sensor data "out" of your local area network and *into* the internet using `HTTPS`. No way woudl you want to send your sensor data via HTTP, that's extremely insecure. And, you refused to pay for the cost of using a cloud provider? That's when I discovered how powerful the standard HTTP methods (GET, POST) and a API really are in this case. I am sure there is more than one way to do this but this proved to be the most rock solid and *secure* way of doing it after trying other a few other ways. And lastly, why didn't I just use the C++ code to make a direct call to the live server instead? It's more secure, in my opinion, which is very important with dealing with data, especially IoT devices. In my opinion, the local Express.js server code (and npm libraries) adds an extra layer of security by providing validation, additional data processing and error checking that the C++ library most definitely did not have. It was mainly a way to get the data out of the device but that's where it ended. 
 
-In ways, this project is a culmination of all that I've learned over the last 1-2 years. This project has almost everything I'd like to learn *more* about so I plan to improve it while I learn more...there's still *lots* to improve and add...
+In ways, this project is a culmination of all that I've learned over the last 1-2 years (client, server and microcontroller programming all in one). This project has almost everything I'd like to learn *more* about so I plan to improve it while I learn...there's still *lots* to learn, improve, add...
+
+Check out an inital "test run" of the project at: [https://jim3.xyz](https://jim3.xyz) At the moment it prints out values every 5 seconds so wait till the table populates when visiting. A `BME680` environmental sensor would be more interesting so that is what I am working on now. :) Will be using a `ESP32` series microcontoller, first time working with an ESP32 so looking forward to it.
 
 ## Usage
 
@@ -49,6 +51,4 @@ IoT
 -   ADXL362 (accelerometer)
 -   Particle Photon 2 (microcontroller)
 
-#### Note
-
-You can check out (a very crude) initial "demo" at my domain \*[https://jim3.xyz](https://jim3.xyz). It's not up all the time, but when it is, you can see the sensor populating the screen. I will replace types of sensors as I go along. I'm just using the ADXL362 as a starting point. A BME680 is next, will be using a ESP32 for that. Really looking forward to that. :)
+---
