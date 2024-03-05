@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>jim3.xyz</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <h2>IoT Event Streamer</h2>
+        <p>Data stream for the ADXL362 accelerometer</p>
+        <p>Axis data and current temperature</p>
+        <table>
+            <tr>
+                <td id="axis-x"></td>
+            </tr>
+            <tr>
+                <td id="axis-y"></td>
+            </tr>
+            <tr>
+                <td id="axis-z"></td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        var source = new EventSource("https://jim3.xyz/events");
+        source.onmessage = function (event) {
+            var data = JSON.parse(event.data);
+            // Create a map of name values to HTML element IDs
+            var nameMap = {
+                x: "axis-x",
+                y: "axis-y",
+                z: "axis-z",
+            };
+
+            // Update the HTML elements
+            for (var key in data) {
+                if (nameMap[key]) {
+                    var element = document.getElementById(nameMap[key]);
+                    element.textContent = key + "-axis: " + data[key];
+                }
+            }
+        };
+        source.onerror = function (event) {
+            console.error("EventSource failed:", event);
+        };
+    </script>
+</html>
