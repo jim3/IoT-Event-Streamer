@@ -1,13 +1,27 @@
+/* Add your custom styles here */
+
+html {
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Courier New", Courier, monospace;
-    padding: 20px;
+    padding: 10px;
     background-color: #f8f9fa;
+    margin: 0;
 }
 
 table {
-    width: 100%;
+    width: 40%;
     border-collapse: collapse;
-    margin-bottom: 50px;
+}
+
+.bme680-table {
+    margin-bottom: 100px;
+}
+
+.adxl362-table {
+    margin-bottom: 100px;
 }
 
 table,
