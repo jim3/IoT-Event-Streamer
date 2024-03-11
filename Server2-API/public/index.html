@@ -5,39 +5,60 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles.css" />
+        <script src="plotly-2.29.1.min.js" charset="utf-8"></script>
     </head>
     <body>
         <h2>IoT Event Streamer</h2>
-        <p>Data stream for the ADXL362 accelerometer</p>
-        <p>Axis data and current temperature</p>
+
+        <p>BME680 Sensor Readings</p>
         <table>
             <tr>
-                <td id="axis-x"></td>
+                <th>Measurement</th>
+                <th>Value</th>
             </tr>
             <tr>
-                <td id="axis-y"></td>
+                <td>Humidity</td>
+                <td id="humidity"></td>
             </tr>
             <tr>
-                <td id="axis-z"></td>
+                <td>Temperature</td>
+                <td id="temperature"></td>
+            </tr>
+            <tr>
+                <td>Pressure</td>
+                <td id="pressure"></td>
+            </tr>
+            <tr>
+                <td>Gas</td>
+                <td id="gas"></td>
             </tr>
         </table>
     </body>
+
+    <!-- JavaScript to handle the EventSource -->
     <script>
         var source = new EventSource("https://jim3.xyz/events");
         source.onmessage = function (event) {
             var data = JSON.parse(event.data);
             // Create a map of name values to HTML element IDs
-            var nameMap = {
-                x: "axis-x",
-                y: "axis-y",
-                z: "axis-z",
+            var bme680 = {
+                humidity: "humidity",
+                temperature: "temperature",
+                pressure: "pressure",
+                gas: "gas",
             };
-
-            // Update the HTML elements
+            // Update the HTML elements for the BME680 sensor readings
             for (var key in data) {
-                if (nameMap[key]) {
-                    var element = document.getElementById(nameMap[key]);
-                    element.textContent = key + "-axis: " + data[key];
+                if (bme680[key]) {
+                    var element = document.getElementById(bme680[key]);
+                    var value = data[key];
+                    // If the key is 'temperature', convert it to Fahrenheit
+                    if (key === "temperature") {
+                        var fahrenheit = (value * 9) / 5 + 32;
+                        value = value.toFixed(2) + "°C / " + fahrenheit.toFixed(2) + "°F";
+                    }
+                    element.textContent =
+                        key.charAt(0).toUpperCase() + key.slice(1) + ": " + value;
                 }
             }
         };
