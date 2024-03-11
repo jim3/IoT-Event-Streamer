@@ -43,7 +43,7 @@ Note: Unless you are the type that _wants_ to do SPI programming [see datasheet 
 |       n/c       |   INT2   |        | Interrupt 2 (not used) |
 |       n/c       |   INT1   |        | Interrupt 1 (not used) |
 
-The BME680 uses the [Micropython Driver for a BME680 breakout](https://github.com/robert-hh/BME680-Micropython) I2C mode is used with this sensor. The only thing you need to do is connect the BME680 to the ESP32 as shown in the table below.
+The BME680 uses the [Micropython Driver for a BME680 breakout](https://github.com/robert-hh/BME680-Micropython) I2C mode is used with this sensor. The only thing you need to do is connect the BME680 to the ESP32 as shown in the table below and put in your PIN's. Other than that, get the driver form https://github.com/robert-hh/BME680-Micropython and import it to use with your `boot.py` and `main.py` files.
 
 <img src="images/bme680-1.jpg" alt="adxl362" width="300"/><br>
 <img src="images/bme680-2.jpg" alt="adxl362" width="300"/><br>
