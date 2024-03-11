@@ -11,7 +11,7 @@
         <h2>IoT Event Streamer</h2>
 
         <p>BME680 Sensor Readings</p>
-        <table>
+        <table class="bme680-table">
             <tr>
                 <th>Measurement</th>
                 <th>Value</th>
@@ -29,36 +29,79 @@
                 <td id="pressure"></td>
             </tr>
             <tr>
-                <td>Gas</td>
+                <td>Gas Resistance</td>
                 <td id="gas"></td>
+            </tr>
+        </table>
+
+        <p>ADXL362 Sensor Readings</p>
+        <table class="adxl362-table">
+            <tr>
+                <th>Measurement</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>X-Axis</td>
+                <td id="axis-x"></td>
+            </tr>
+            <tr>
+                <td>Y-Axis</td>
+                <td id="axis-y"></td>
+            </tr>
+            <tr>
+                <td>Z-Axis</td>
+                <td id="axis-z"></td>
             </tr>
         </table>
     </body>
 
-    <!-- JavaScript to handle the EventSource -->
+    <!-- ------------------------- -->
+
     <script>
         var source = new EventSource("https://jim3.xyz/events");
         source.onmessage = function (event) {
+            console.log(event.data); // for debugging
             var data = JSON.parse(event.data);
+
             // Create a map of name values to HTML element IDs
-            var bme680 = {
-                humidity: "humidity",
-                temperature: "temperature",
-                pressure: "pressure",
-                gas: "gas",
-            };
-            // Update the HTML elements for the BME680 sensor readings
-            for (var key in data) {
-                if (bme680[key]) {
-                    var element = document.getElementById(bme680[key]);
-                    var value = data[key];
-                    // If the key is 'temperature', convert it to Fahrenheit
-                    if (key === "temperature") {
-                        var fahrenheit = (value * 9) / 5 + 32;
-                        value = value.toFixed(2) + "°C / " + fahrenheit.toFixed(2) + "°F";
+            if (data.sensorType === "bme680") {
+                var bme680 = {
+                    humidity: "humidity",
+                    temperature: "temperature",
+                    pressure: "pressure",
+                    gas: "gas",
+                };
+                // Update the HTML elements for the BME680 sensor readings
+                for (var key in data) {
+                    if (bme680[key]) {
+                        var element = document.getElementById(bme680[key]);
+                        var value = data[key];
+                        // If the key is 'temperature', convert it to Fahrenheit
+                        if (key === "temperature") {
+                            var fahrenheit = (value * 9) / 5 + 32;
+                            value =
+                                value.toFixed(2) + "°C / " + fahrenheit.toFixed(2) + "°F";
+                        }
+                        element.textContent =
+                            key.charAt(0).toUpperCase() + key.slice(1) + ": " + value;
                     }
-                    element.textContent =
-                        key.charAt(0).toUpperCase() + key.slice(1) + ": " + value;
+                }
+            }
+
+            if (data.sensorType === "adxl362") {
+                var adxl362 = {
+                    x: "axis-x",
+                    y: "axis-y",
+                    z: "axis-z",
+                };
+                // Update the HTML elements for the ADXL362 sensor readings
+                for (var key in data) {
+                    if (adxl362[key]) {
+                        var element = document.getElementById(adxl362[key]);
+                        var value = data[key];
+                        element.textContent =
+                            key.charAt(0).toUpperCase() + key.slice(1) + ": " + value;
+                    }
                 }
             }
         };
