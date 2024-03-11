@@ -49,8 +49,8 @@ The BME680 uses the [Micropython Driver for a BME680 breakout](https://github.co
 | :---: | :------: | :----: | :---------: |
 | 3.3V  |   VIN    |  Red   |   3.3V DC   |
 |  GND  |   GND    | Black  |   Ground    |
-|  SCL  |   SCL    | Orange |   I2C SCL   |
-|  SDA  |   SDA    |  Blue  |   I2C SDA   |
+|  22  |   SCK    | Yellow |   I2C SCL   |
+|  21  |   MOSI    |  Blue  |   I2C SDA   |
 
 ### Tech Stack
 
