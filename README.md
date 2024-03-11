@@ -35,16 +35,17 @@ IoT
 <img src="images/02-adxl362.jpg" alt="adxl362" width="300"/>
 <img src="images/03-adxl362.jpg" alt="adxl362" width="300"/>
 
-|     Breakout     | Particle Device | Color  |      Description       |
-| :--------------: | :-------------: | :----: | :--------------------: |
-|       VIN        |       3V3       |  Red   |     3.3V DC Power      |
-|       GND        |       GND       | Black  |         Ground         |
-|    SCL / SCLK    |     SPI CLK     | Orange |    SPI Clock (SCK)     |
-| SDA / MOSI / SDI |    SPI MOSI     |  Blue  |     SPI Master Out     |
-|    SDO / MISO    |    SPI MISO     | Green  |     SPI Master In      |
-|        CS        |       A2        | Yellow |    SPI Chip Select     |
-|       INT2       |       n/c       |        | Interrupt 2 (not used) |
-|       INT1       |       n/c       |        | Interrupt 1 (not used) |
+| Particle Device | Breakout | Color  |      Description       |
+| :-------------: | :------: | :----: | :--------------------: |
+|       3V3       |   VIN    |  Red   |     3.3V DC Power      |
+|       GND       |   GND    | Black  |         Ground         |
+|       CLK       |   SCL    | Orange |    SPI Clock (SCK)     |
+|      MOSI       |   SDA    |  Blue  |     SPI Master Out     |
+|      MISO       |   SDO    | Green  |     SPI Master In      |
+|       A2        |    CS    | Yellow |    SPI Chip Select     |
+|       n/c       |   INT2   |        | Interrupt 2 (not used) |
+|       n/c       |   INT1   |        | Interrupt 1 (not used) |
+
 
 ### Tech Stack
 
