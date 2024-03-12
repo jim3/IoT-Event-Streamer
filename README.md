@@ -55,12 +55,12 @@ The BME680 uses the [Micropython Driver for a BME680 breakout](https://github.co
 |  22  |   SCK     | Yellow |   I2C SCK   |
 |  21  |   MOSI    |  Blue  |   I2C MOSI  |
 
-### Tech Stack
+### Hardware/Software Used
 
 -   C++ (firmware)
 -   MicroPython (firmware)
--   Node.js (server) / Express.js
--   HTML, JavaScript (client) / SSE (server-sent events)
+-   Node.js / Express.js
+-   HTML, JavaScript / SSE (server-sent events)
 -   ADXL362 (accelerometer)
 -   BME680 (environmental sensor)
 -   Particle Photon 2 (microcontroller)
