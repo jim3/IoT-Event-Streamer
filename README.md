@@ -18,8 +18,6 @@ In ways, this project is a summary of everything I have learned over the last 1-
 
 ---
 
-\* Check out an inital "test run" of the project at: [https://jim3.xyz](https://jim3.xyz). At the moment it prints out values every few seconds so wait till the table populates when visiting. If you noticed a big difference between the axis values for the ADXL362 happening that's probably me or the cat moving it around. 🤣 ...still looking for a good use for the accelorometer...The other sensor has proved to be my favorite, the `BME680` environmental sensor. I used a MicroPython driver by user @robert-hh https://github.com/robert-hh/BME680-Micropython to get things working. It proved to be a good move as it literally works right out of the box. Only thing you need to do, if using I2C, is change the PIN numnbers. Without these libraries/drivers this project wouldn't even be possible so big thanks to the authors and the work they put into it.
-
 ## Usage
 
 ### Hardware connections
@@ -71,3 +69,8 @@ The BME680 uses the [Micropython Driver for a BME680 breakout](https://github.co
 ## Installation
 
 `....`
+
+---
+
+*Note: There is a working demo of the project at: [https://jim3.xyz](https://jim3.xyz) but it will not be up and running reliably, not until I get a couple more boards as I do not want to tie up my esp32 just to show the results*.
+
