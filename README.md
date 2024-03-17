@@ -46,19 +46,18 @@ The BME680 uses the C++ [Adafruit BME680](https://github.com/kaga/Adafruit_BME68
 | :---: | :------: | :----: | :---------: |
 | 3.3V  |   VIN    |  Red   |   3.3V DC   |
 |  GND  |   GND    | Black  |   Ground    |
-|  22  |   SCK     | Yellow |   I2C SCK   |
-|  21  |   MOSI    |  Blue  |   I2C MOSI  |
+|  D1  |   SCK     | Yellow |   I2C       |
+|  D0  |   MOSI    |  Blue  |   I2C       |
 
 ### Hardware/Software Used
 
 -   C++ (firmware)
--   MicroPython (firmware)
 -   Node.js / Express.js
 -   HTML/CSS & JavaScript
--   ADXL362 accelerometer
 -   BME680 environmental sensor
+-   ADXL362 accelerometer
 -   Particle Photon 2 microcontroller
--   ESP32 DevKit-M-1 microcontroller
+-   Particle Photon 2 microcontroller
 
 ---
 
@@ -68,5 +67,5 @@ The BME680 uses the C++ [Adafruit BME680](https://github.com/kaga/Adafruit_BME68
 
 ---
 
-*Note: There is a working demo of the project at: [https://jim3.xyz](https://jim3.xyz) but it will not be up and running reliably, not until I get a couple more boards as I do not want to tie up my esp32 just to show the results*.
+*Note: There is a working demo of the project that illustrates the app at: [https://jim3.xyz](https://jim3.xyz) *note: not guaranteed to be up and running at all times* 
 
