@@ -8,13 +8,9 @@ An _IoT Event Streamer_ for microcontroller sensor data. This project is a simpl
 
 The project is divided into parts: the C++ firmware for the Photon 2 microcontroller, the MicroPython firmware for the ESP32, two different Node.js servers (local/live) and a simple HTML page with JavaScript to display the sensor data.
 
-`Server #1` is ran locally, on your LAN. It's a Node/Express server and takes `POST` requests from the _microcontrollers_, processes the sensor data and then makes another POST request to `Server #2` located on an HTTPS encrypted webserver.
+`Server #1` is ran locally. It's a Node/Express server and takes `POST` requests from the _microcontrollers_, processes the sensor data and then makes another POST request to `Server #2` located on an HTTPS encrypted webserver.
 
 `Server #2` has two endpoints, `/sensors` and `/accelerometer`, where it recieves the sensor data. The server code also has a route with an `/events` endpoint that listens for sensor data and pushes it to the client via `SSE` where it's displayed.
-
-Because the project is in its infancy, I have purposely slowed down the data stream to make it easier to see the data \*(see demo). I plan to change it to real-time once the project has matured a bit. But honestly, that isn't the focus of the project. The focus is really the entire process here. That is, what do you do if you have an IoT device that doesn't support `HTTPS` or have an `HTTPS` client library? How to get your sensor data "out" of your local area network and _into_ the internet so it can use `HTTPS`. *And* also do this without relying on a cloud provider or any other 3rd party softwware. No way would you want to send your sensor data out via `HTTP`, that's insecure. That's when I discovered (took me way longer than it should have! 🙃) how powerful the standard HTTP methods (GET, POST) and a API really are in this case. I am sure there is more than one way to do this (even a better way) but this proved to be the most rock solid and _secure_ way of doing it after trying several different methods. Lastly, why didn't I just use the C++ code for my microcontroller to make a direct call to the live server instead and skip the local server? In my opinion, the local Express.js server code could add an extra layer of security by providing validation, additional data processing and *error checking* that the C++ library probably did _not_ have seeing as it was no longer maintained, which is common. For example, the Axios HTTP client library takes care of a lot of error handling and has features like `Interceptors` that I was unaware of at the time and no doubt more the server more robust because of it.
-
-In ways, this project is a summary of everything I have learned over the last 1-2 years (client, server and microcontroller programming all in one). This project has almost everything I'd like to learn _more_ about so I plan to improve it while I learn...there's still _lots_ to learn, improve, add...
 
 ---
 
@@ -41,7 +37,7 @@ Note: Unless you are the type that _wants_ to do SPI programming [see datasheet 
 |       n/c       |   INT2   |        | Interrupt 2 (not used) |
 |       n/c       |   INT1   |        | Interrupt 1 (not used) |
 
-The BME680 uses the [Micropython Driver for a BME680 breakout](https://github.com/robert-hh/BME680-Micropython) I2C mode is used with this sensor. The only thing you need to do is connect the BME680 to the ESP32 as shown in the table below and put in your PIN's. Other than that, get the driver form https://github.com/robert-hh/BME680-Micropython and import it to use with your `boot.py` and `main.py` files.
+The BME680 uses the C++ [Adafruit BME680](https://github.com/kaga/Adafruit_BME680) library (for the Particle Photon) via I2C.
 
 <img src="images/bme680-1.jpg" alt="adxl362" width="300"/>
 <img src="images/bme680-2.jpg" alt="adxl362" width="300"/><br>
