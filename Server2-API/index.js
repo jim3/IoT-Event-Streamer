@@ -1,6 +1,3 @@
-// Server #2 (your live server/domain)
-// --------------------------------------------
-
 const express = require("express");
 const axios = require("axios");
 const path = require("path");
@@ -33,7 +30,7 @@ app.get("/events", (req, res) => {
     });
 });
 
-// /sensors endpoint where we recieve our sensor data
+// this is our /sensors endpoint where we recieve our sensor data
 app.post("/sensors", (req, res) => {
     req.body.sensorType = "bme680";
     console.log("Server #2 has received bme680 sensor data:", req.body); // this logs the sensor data
