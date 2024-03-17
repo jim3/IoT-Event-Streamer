@@ -12,25 +12,37 @@
 
         <p>BME680 Sensor Readings</p>
         <table class="bme680-table">
+            <!-- header row-->
             <tr>
                 <th>Measurement</th>
                 <th>Value</th>
             </tr>
+
+            <!-- data rows -->
             <tr>
-                <td>Humidity</td>
-                <td id="humidity"></td>
-            </tr>
-            <tr>
-                <td>Temperature</td>
+                <td>Temperature <code>C&deg;</code></td>
                 <td id="temperature"></td>
             </tr>
             <tr>
-                <td>Pressure</td>
+                <td>Temperature <code>F&deg;</code></td>
+                <td id="temperaturef"></td>
+            </tr>
+            <tr>
+                <td>Humidity <code>&#37</code></td>
+                <td id="humidityPercentage"></td>
+            </tr>
+            <tr>
+                <td>Pressure <code>hPa</code></td>
                 <td id="pressure"></td>
             </tr>
             <tr>
-                <td>Gas Resistance</td>
+                <td>Gas <code>k&#8486;</code></td>
                 <td id="gas"></td>
+            </tr>
+            <tr>
+                <td>Altitude <code>meters</code></td>
+                <td id="altitude"></td>
+                <!-- in meters -->
             </tr>
         </table>
 
@@ -53,37 +65,37 @@
                 <td id="axis-z"></td>
             </tr>
         </table>
+         
     </body>
 
     <!-- ------------------------- -->
 
     <script>
         var source = new EventSource("https://jim3.xyz/events");
-        source.onmessage = function (event) {
-            console.log(event.data); // for debugging
-            var data = JSON.parse(event.data);
 
-            // Create a map of name values to HTML element IDs
+        source.onmessage = function (event) {
+            console.log(event.data);
+            var data = JSON.parse(event.data);
+            // map of name values to HTML elements
             if (data.sensorType === "bme680") {
                 var bme680 = {
-                    humidity: "humidity",
-                    temperature: "temperature",
-                    pressure: "pressure",
-                    gas: "gas",
+                    temperatureInC: "temperature",
+                    temperatureInF: "temperaturef",
+                    humidityPercentage: "humidityPercentage",
+                    pressureHpa: "pressure",
+                    gasResistanceKOhms: "gas",
+                    approxAltitudeInM: "altitude",
                 };
                 // Update the HTML elements for the BME680 sensor readings
                 for (var key in data) {
                     if (bme680[key]) {
                         var element = document.getElementById(bme680[key]);
                         var value = data[key];
-                        // If the key is 'temperature', convert it to Fahrenheit
-                        if (key === "temperature") {
-                            var fahrenheit = (value * 9) / 5 + 32;
-                            value =
-                                value.toFixed(2) + "°C / " + fahrenheit.toFixed(2) + "°F";
-                        }
+
+                        console.log(key, value); // temperatureInC 24.99
                         element.textContent =
-                            key.charAt(0).toUpperCase() + key.slice(1) + ": " + value;
+                            // key.charAt(0).toUpperCase() + key.slice(1) + ": " + value;
+                            value;
                     }
                 }
             }
