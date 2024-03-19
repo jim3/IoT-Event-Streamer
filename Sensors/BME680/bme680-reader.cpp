@@ -40,7 +40,8 @@ http_response_t response;
 
 void setup() {
     if (!bme.begin()) {
-        Particle.publish("Log", "Could not find a valid BME680 sensor, check wiring!");
+        Particle.publish("Log", "Could not find a valid BME680 sensor, 
+check wiring!");
     } else {
         Particle.publish("Log", "bme.begin() success =)");
         // Set up oversampling and filter initialization
