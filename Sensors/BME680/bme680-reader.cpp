@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------
 // BME680 Sensor Reader [I2C]
-// [Adafruit_BME680 Library](https://docs.particle.io/reference/device-os/libraries/a/Adafruit_BME680/)
-// [HttpClient Library](https://docs.particle.io/reference/device-os/libraries/h/HttpClient/)
+// https://docs.particle.io/reference/device-os/libraries/a/Adafruit_BME680/)
+// https://docs.particle.io/reference/device-os/libraries/h/HttpClient/)
 // ----------------------------------------------------------------------------
 
 #include "Particle.h"
