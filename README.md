@@ -57,7 +57,6 @@ The BME680 uses the C++ [Adafruit BME680](https://github.com/kaga/Adafruit_BME68
 -   BME680 environmental sensor
 -   ADXL362 accelerometer
 -   Particle Photon 2 microcontroller
--   Particle Photon 2 microcontroller
 
 ---
 
