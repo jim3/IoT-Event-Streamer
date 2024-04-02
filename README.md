@@ -6,7 +6,7 @@
 
 An _IoT Event Streamer_ for microcontroller sensor data. This project is a simple example of how to stream sensor data from a microcontroller, via `HTTP`, to an `HTTPS` webserver located on the internet. The data is then pushed to a client on the live server via SSE (server-sent events). Uses HTML & JavaScript to display the data.
 
-The project is divided into parts: the C++ firmware for the Photon 2 microcontroller, the MicroPython firmware for the ESP32, two different Node.js servers (local/live) and a simple HTML page with JavaScript to display the sensor data.
+The project is divided into parts: the C++ firmware for the Photon 2 microcontroller, ~~the MicroPython firmware~~ and the ESP32, two different Node.js servers (local/live) and a simple HTML page with JavaScript to display the sensor data.
 
 `Server #1` is ran locally. It's a Node/Express server and takes `POST` requests from the _microcontrollers_, processes the sensor data and then makes another POST request to `Server #2` located on an HTTPS encrypted webserver.
 
