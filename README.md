@@ -66,5 +66,5 @@ The BME680 uses the C++ [Adafruit BME680](https://github.com/kaga/Adafruit_BME68
 
 ---
 
-*Note: There is a working demo of the project that illustrates the app at: [https://jim3.xyz](https://jim3.xyz) *note: not guaranteed to be up and running at all times* 
+*Note: ~~There is a working demo of the project that illustrates the app at: [https://jim3.xyz](https://jim3.xyz) *note: not guaranteed to be up and running at all times* ~~
 
